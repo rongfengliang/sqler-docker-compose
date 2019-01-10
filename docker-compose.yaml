@@ -1,0 +1,20 @@
+version: "3"
+services:
+  sqler:
+    image: dalongrong/sqler:1.5
+    environment:
+    - "DSN=root:dalongrong@tcp(mysqldb:3306)/test?multiStatements=true"
+    ports:
+    - "3678:3678"
+    - "8025:8025"
+  mysqldb:
+    image: mysql:5.7.16
+    ports:
+      - 3306:3306
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: dalongrong
+      MYSQL_DATABASE: test
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      TZ: Asia/Shanghai
