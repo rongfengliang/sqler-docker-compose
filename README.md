@@ -49,3 +49,9 @@ result
     "success": true
 }
 ```
+
+## search all insert datas
+
+```code
+curl -v http://localhost:8025/allusers | jq
+```

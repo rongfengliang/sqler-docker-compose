@@ -2,6 +2,8 @@ version: "3"
 services:
   sqler:
     image: dalongrong/sqler:1.5
+    volumes:
+    - "./config/config.example.hcl:/app/config.example.hcl"
     environment:
     - "DSN=root:dalongrong@tcp(mysqldb:3306)/test?multiStatements=true"
     ports:

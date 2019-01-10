@@ -13,7 +13,29 @@ _boot {
         );
     SQL
 }
+allusers {
+    // what request method will this macro be called
+    // default: ["ANY"]
+    methods = ["GET"]
 
+    // authorizers,
+    // sqler will attempt to send the incoming authorization header
+    // to the provided endpoint(s) as `Authorization`,
+    // each endpoint MUST return `200 OK` so sqler can continue, other wise,
+    // sqler will break the request and return back the client with the error occured.
+    // each authorizer has a method and a url, if you ignored the method
+    // it will be automatically set to `GET`.
+    // authorizers = ["GET http://web.hook/api/authorize", "GET http://web.hook/api/allowed?roles=admin,root,super_admin"]
+
+    // the validation rules
+    // you can specifiy seprated rules for each request method!
+
+
+    // the query to be executed
+    exec = <<SQL
+        SELECT * FROM users;
+    SQL
+}
 // adduser macro/endpoint, just hit `/adduser` with
 // a `?user_name=&user_email=` or json `POST` request
 // with the same fields.
