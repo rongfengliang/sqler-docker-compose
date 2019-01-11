@@ -82,3 +82,14 @@ usersinfo {
   JS
 
 }
+
+demo {
+  exec = "select * from users"
+  transformer = <<JS
+    // do some convert only print name && email
+    (function(){
+       return $result; 
+    })()
+  JS
+
+}
