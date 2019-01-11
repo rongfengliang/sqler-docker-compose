@@ -1,12 +1,12 @@
-FROM alpine:latest as build
-ENV VERSION=v1.6
+FROM golang:alpine as build
+ENV VERSION=v1.7
 WORKDIR /app
-RUN apk update && apk add wget unzip
-RUN wget  https://github.com/alash3al/sqler/releases/download/${VERSION}/sqler_linux_amd64.zip
-RUN unzip sqler_linux_amd64.zip && chmod +x sqler_linux_amd64
+RUN apk update && apk add wget unzip git 
+RUN  git clone https://github.com/alash3al/sqler.git
+RUN  cd sqler && go build
 
 FROM alpine:latest
-ENV APPVERSION=1.6
+ENV APPVERSION=1.7
 LABEL VERSION="sqler-${APPVERSION}"
 LABEL EMAIL="1141519465@qq.com"
 LABEL AUTHOR="dalongrong"
@@ -22,5 +22,5 @@ ENV PATH=$PATH:/usr/local/bin
 COPY config/config.example.hcl /app/config.example.hcl
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
-COPY --from=build /app/sqler_linux_amd64 /usr/local/bin/sqler
+COPY --from=build /app/sqler/sqler /usr/local/bin/sqler
 ENTRYPOINT ["./entrypoint.sh"]
