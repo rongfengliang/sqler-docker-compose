@@ -1,7 +1,7 @@
 FROM golang:alpine as build
 ENV VERSION=v1.7
 WORKDIR /app
-RUN apk update && apk add wget unzip git 
+RUN apk update && apk add wget unzip build-base git bzr mercurial gcc 
 RUN  git clone https://github.com/alash3al/sqler.git
 RUN  cd sqler && go build
 
