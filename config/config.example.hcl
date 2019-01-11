@@ -64,3 +64,21 @@ databases {
         })()
     JS
 }
+usersinfo {
+  exec = "select * from users"
+  transformer = <<JS
+    // do some convert only print name && email
+    (function(){
+       var newResult=[];
+       for (var item in $result) {
+        var user = {
+            user_name:$result[item].name,
+            user_email:$result[item].email
+        }
+        newResult.push(user)
+       }
+       return newResult; 
+    })()
+  JS
+
+}
