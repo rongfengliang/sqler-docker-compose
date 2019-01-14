@@ -1,12 +1,12 @@
 FROM golang:alpine as build
-ENV VERSION=v1.7
+ENV VERSION=v2.0
 WORKDIR /app
 RUN apk update && apk add wget unzip build-base git bzr mercurial gcc 
 RUN  git clone https://github.com/alash3al/sqler.git
 RUN  cd sqler && go build
 
 FROM alpine:latest
-ENV APPVERSION=1.7
+ENV APPVERSION=2.0
 LABEL VERSION="sqler-${APPVERSION}"
 LABEL EMAIL="1141519465@qq.com"
 LABEL AUTHOR="dalongrong"
