@@ -19,7 +19,7 @@ ENV DRIVER=mysql
 ENV WORKERS=4
 EXPOSE 3678 8025
 ENV PATH=$PATH:/usr/local/bin
-COPY config/config.example.hcl /app/config.example.hcl
+COPY config/config-2-0-example.hcl /app/config.example.hcl
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 COPY --from=build /app/sqler/sqler /usr/local/bin/sqler
