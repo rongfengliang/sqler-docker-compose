@@ -32,21 +32,21 @@ adduser {
 
     methods = ["POST"]
 
-    authorizer = <<JS
-        (function(){
-            log("use this for debugging")
-            token = $input.http_authorization
-            response = fetch("http://requestbin.fullcontact.com/zxpjigzx", {
-                headers: {
-                    "Authorization": token
-                }
-            })
-            if ( response.statusCode != 200 ) {
-                return false
-            }
-            return true
-        })()
-    JS
+    // authorizer = <<JS
+    //     (function(){
+    //         log("use this for debugging")
+    //         token = $input.http_authorization
+    //         response = fetch("http://requestbin.fullcontact.com/zxpjigzx", {
+    //             headers: {
+    //                 "Authorization": token
+    //             }
+    //         })
+    //         if ( response.statusCode != 200 ) {
+    //             return false
+    //         }
+    //         return true
+    //     })()
+    // JS
 
     // include some macros we declared before
     include = ["_boot"]
