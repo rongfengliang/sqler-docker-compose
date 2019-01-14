@@ -2,14 +2,14 @@
 
 ## how to running
 
-* build sqler image or use build version dalongrong/sqler:1.5
+* build sqler image or use build version dalongrong/sqler:2.0
 
 with env for running
 
 support config vars (-config, -dsn, -rest,-resp,-driver,-workers)
 
 ```code
-docker-compose build -t dalongrong/sqler:1.5 .
+docker-compose build -t dalongrong/sqler:2.0 .
 ```
 
 * running
