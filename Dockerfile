@@ -3,7 +3,7 @@ ENV VERSION=v2.0
 WORKDIR /app
 RUN apk update && apk add wget unzip build-base git bzr mercurial gcc 
 RUN  git clone https://github.com/alash3al/sqler.git
-RUN  cd sqler && go build
+RUN  cd sqler && CGO_ENABLED=1 go build
 
 FROM alpine:latest
 ENV APPVERSION=2.0
