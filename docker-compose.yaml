@@ -9,6 +9,12 @@ services:
     ports:
     - "3678:3678"
     - "8025:8025"
+  benthos:
+    image: jeffail/benthos
+    volumes:
+    - "./config/webhook.yaml:/benthos.yaml"
+    ports:
+    - "4195:4195"
   mysqldb:
     image: mysql:5.7.16
     ports:

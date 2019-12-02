@@ -129,16 +129,10 @@ _sqlite_tables {
     SELECT 
         name
     FROM 
-        sqlite_master 
-    WHERE 
-        type ='table' AND 
-        name NOT LIKE 'sqlite_%';
+        userinfos;
     SQL
-
-
     cron = "* * * * *"
-
     trigger {
-        webhook = "https://en09y7gttbxyos.x.pipedream.net"
+        webhook = "http://benthos:4195/post/customer1"
     }
 }
