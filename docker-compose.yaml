@@ -1,7 +1,7 @@
 version: "3"
 services:
   sqler:
-    image: dalongrong/sqler:2.0
+    image: dalongrong/sqler:2.2
     volumes:
     - "./config/config-2-0-example.hcl:/app/config.example.hcl"
     environment:
