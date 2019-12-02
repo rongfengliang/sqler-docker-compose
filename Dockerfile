@@ -1,12 +1,12 @@
 FROM golang:alpine as build
-ENV VERSION=v2.0
+ENV VERSION=v2.2
 WORKDIR /app
 RUN apk update && apk add wget unzip build-base git bzr mercurial gcc 
 RUN  git clone https://github.com/alash3al/sqler.git
 RUN  cd sqler && CGO_ENABLED=1 go build
 
 FROM alpine:latest
-ENV APPVERSION=2.0
+ENV APPVERSION=2.2
 LABEL VERSION="sqler-${APPVERSION}"
 LABEL EMAIL="1141519465@qq.com"
 LABEL AUTHOR="dalongrong"
@@ -19,7 +19,7 @@ ENV DRIVER=mysql
 ENV WORKERS=4
 EXPOSE 3678 8025
 ENV PATH=$PATH:/usr/local/bin
-COPY config/config-2-0-example.hcl /app/config.example.hcl
+COPY config/config-2-2-example.hcl /app/config.example.hcl
 COPY entrypoint.sh /app/entrypoint.sh
 RUN chmod +x /app/entrypoint.sh
 COPY --from=build /app/sqler/sqler /usr/local/bin/sqler
